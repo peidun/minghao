@@ -1,0 +1,10 @@
+server:
+  #端口号
+  port: 80
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false #开发时关闭缓存,不然没法看到实时页面
