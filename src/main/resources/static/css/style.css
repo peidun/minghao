@@ -381,6 +381,23 @@ img {
     }
 }
 
+@media (max-width:767px) {
+    .top-title {
+        font-size: 3rem;
+    }
+    .lead {
+        font-size: 1rem;
+    }
+}
+@media (max-width:374px) {
+    .top-title {
+        font-size: 2.5rem;
+    }
+    .lead {
+        font-size: .875rem;
+    }
+}
+
 
 /*------------------------
  BACKGROUND
