@@ -1,0 +1,127 @@
+.btn {
+    padding: .75rem 2rem !important;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-size: .875rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/*----------------------
+ CONTACT
+-----------------------*/
+
+.form-control{
+    border-radius: 3px;
+    height: 50px;
+    padding-left: 15px;
+    border: 1px solid#ddd;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-icon {
+    font-size: 20px;
+    line-height: 20px;
+}
+.skill-list{
+    padding-left: 30px;
+    margin-top: 15px;
+}
+.skill-list li{
+    position: relative;
+    color: #222;
+    padding: 0px 0px 7px 30px;
+}
+
+/*----------------------
+ Banner STYLE
+-----------------------*/
+.banner-content{
+    padding: 130px 0px;
+}
+
+
+/*----------------------
+ FEATURE STYLE
+-----------------------*/
+
+.feature-block h4{
+    text-transform: capitalize;
+}
+.feature-icon-block{
+    font-size: 40px;
+    width: 100px;
+    height: 100px;
+    background:#eee;
+    color: #007bff;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 100%;
+    padding-top: 15px;
+    -webkit-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition:all .3s ease 0s ;
+
+}
+
+.feature-block:hover .feature-icon-block{
+    background:#007bff;
+    color: #fff;
+}
+
+.service-font {
+    font-size: 40px;
+    font-weight: 900;
+}
+
+/*----------------------
+ ABOUT STYLE
+-----------------------*/
+.about-content{
+    padding-left: 30px;
+}
+.about-content p{
+    margin: 20px 0px 30px;
+}
+
+
+.about-img{
+    position: relative;
+    z-index: 222;
+    padding: 20px;
+}
+
+
+.about-img:after{
+    position: absolute;
+    content:"";
+    right: 0px;
+    bottom:0px;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    z-index: -1;
+    -webkit-box-shadow: 0px 0px 20px #eee;
+    box-shadow:  0px 0px 20px #eee;
+}
+.about-img:before{
+    position: absolute;
+    content:"";
+    left: 0px;
+    top: 0px;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    z-index: -1;
+    -webkit-box-shadow: 0px 0px 20px #eee;
+    box-shadow:  0px 0px 20px #eee;
+}
+
+.home-container {
+    position: relative;
+    top: 50%; /*偏移*/
+    transform: translateY(-50%);
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="common-js">
+        <!-- Global JS -->
+        <script th:src="@{libs/jquery/jquery.min.js}"></script>
+        <script th:src="@{libs/bootstrap/bootstrap.bundle.min.js}"></script>
+
+        <!-- Plugin JavaScript -->
+        <script th:src="@{js/jquery.easing.min.js}"></script>
+
+        <!-- Theme JS -->
+        <script th:src="@{js/theme.js}"></script>
+    </div>
+</body>
+</html>

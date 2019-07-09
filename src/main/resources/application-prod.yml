@@ -1,0 +1,19 @@
+server:
+  #端口号
+  port: 80
+
+spring:
+  thymeleaf:
+    prefix:
+      classpath: /templates/
+    mode: LEGACYHTML5
+    encoding: UTF-8
+  datasource:
+    username: root
+    password: Wangpd123!
+    url: jdbc:mysql://127.0.0.1:3306/mhstudio?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mybatis/*Mapper.xml
+  config-location:  classpath:/mybatis/mybatis-config.xml

@@ -1,0 +1,53 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/common-head :: common_head(~{::title},~{::link})">
+    <title>明皓摄影-下载</title>
+    <link rel="stylesheet" th:href="@{css/download.css}">
+</head>
+
+<body>
+
+<!-- NAVBAR
+================================================= -->
+<div th:replace="common/header :: header" ></div>
+
+<!-- HERO
+================================================== -->
+<section class="section section-top" id="download">
+    <div class="container div-container">
+        <div class="row justify-content-center align-items-center">
+            <div class="download-block bg-light">
+                <div class="download-content">
+                    <p>请输入下载码</p>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <input type="text" name="email" id="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <input name="submit" type="submit" class="btn btn-primary" value="下载文件">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / .row -->
+    </div>
+    <!-- / .container -->
+</section>
+
+<!-- FOOTER
+================================================== -->
+<div class="footer-1">
+    <p>Made by wpd</p>
+</div>
+
+<!-- JAVASCRIPT
+================================================== -->
+
+<div th:replace="common/common-js :: common-js" ></div>
+</body>
+
+</html>

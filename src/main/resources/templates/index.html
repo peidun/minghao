@@ -1,85 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+<head th:replace="common/common-head :: common_head(~{::title},~{::link})">
     <title>明皓摄影工作室-每一张照片，都是时光的标本</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="description" content="明皓摄影工作室-为您提供专业的人像摄影及商业摄影。">
-    <meta name="Keywords" content="南京约拍,南京商业摄影,摄影,南京摄影工作室,约拍,写真,宣传片制作">
-    <meta name="author" content="wpd">
-
-    <!-- Icon CSS -->
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1264471_lj7azla7fd.css">
-
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-    <title>Coral-Onepage Portfolio Template</title>
+    <link rel="stylesheet" th:href="@{css/index.css}">
 </head>
 
 <body id="page-top">
 
     <!-- NAVBAR
     ================================================= -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-togglable  fixed-top " id="mainNav">
-        <div class="container">
-
-            <!-- Brand -->
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <h2>明皓摄影</h2>
-            </a>
-
-            <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon-bar">
-                    <i class="iconfont iconmove"></i>
-                </span>
-            </button>
-
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <!-- Links -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#page-top">
-                            主页
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">
-                            发现
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">
-                            下载
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">
-                            关于
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link js-scroll-trigger" href="#contact">
-                            联系我们
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- / .navbar-collapse -->
-        </div>
-        <!-- / .container -->
-    </nav>
+    <div th:replace="common/header :: header" ></div>
 
     <!-- HERO
     ================================================== -->
-    <section class="section section-top section-full">
+    <section class="section section-top">
 
         <!-- Cover -->
         <div class="bg-cover" style="background-image: url(img/bg-1-z.jpg);"></div>
@@ -120,9 +55,9 @@
         <!-- / .container -->
     </section>
 
-    <!-- ABOUT
+    <!-- 照片展示
     ================================================== -->
-    <section class="section" id="about">
+    <section class="section">
         <div class="container">
             <div class="row align-items-center ">
                 <div class="col-lg-6 col-md-6">
@@ -174,7 +109,7 @@
                         </h2>
                         <p>我们每天穿梭在这些高楼与高楼之间，忙碌而努力的生活着，你是否停下脚步，静下来去感受周遭的一切</p>
 
-                        <a href="#contact" class="btn btn-primary">更多...</a>
+                        <a href="#" class="btn btn-primary">更多...</a>
                     </div>
                 </div>
             </div>
@@ -183,7 +118,7 @@
 
     <!-- SERVICES
     ================================================== -->
-    <section class="section bg-light" id="feature">
+    <section class="section bg-light" id="service">
         <div class="container">
             <div class="row justify-content-center mb-4">
                 <div class="col-md-8 col-lg-6 text-center">
@@ -195,7 +130,7 @@
 
                     <!-- Subheading -->
                     <p class="mb-5 ">
-                        记录生活的点点滴滴,记下您最的美丽瞬间
+                        记录生活的点点滴滴，留住您最美丽的瞬间
                     </p>
 
                 </div>
@@ -271,7 +206,7 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <form action="mail.php" method="post" id="main_contact_form" class="contact__form">
+                    <form action="#" method="post" id="main_contact_form" class="contact__form">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -296,7 +231,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="message" id="message" cols="30" rows="6" class="form-control" placeholder="您的需求" required="required" ></textarea>
+                                    <textarea name="message" id="message" cols="30" rows="6" class="form-control" placeholder="您的需求"></textarea>
                                 </div>
                             </div>
 
@@ -325,24 +260,12 @@
 
     <!-- FOOTER
     ================================================== -->
-    <footer class="footer-padding bg-dark">
-        <!--Content -->
-        <div class="container">
-            <p>Made by wpd</p>
-    </footer>
+    <div th:replace="common/footer :: footer" ></div>
 
     <!-- JAVASCRIPT
     ================================================== -->
-    <!-- Global JS -->
-    <script src="libs/jquery/jquery.min.js"></script>
-    <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-
-    <!-- Theme JS -->
-    <script src="js/theme.js"></script>
-
+    <div th:replace="common/common-js :: common-js" ></div>
 </body>
 
 </html>

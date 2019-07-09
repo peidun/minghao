@@ -1,0 +1,27 @@
+body {
+    background-image: url(/img/download/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+.download-block {
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(171,198,235,.3);
+}
+
+.download-content {
+    padding: 15px 25px;
+    background-color: white;
+}
+.btn {
+    font-size: 14px;
+}
+
+.div-container {
+    position: relative;
+    top: 40%; /*偏移*/
+    transform: translateY(-50%);
+}
+
