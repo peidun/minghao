@@ -13,9 +13,4 @@ public class IndexController {
     public String index() {
         return "index";
     }
-
-    @RequestMapping(value = "/download")
-    public String download() {
-        return "download";
-    }
 }

@@ -18,3 +18,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mybatis/mybatis/*Mapper.xml
   config-location:  classpath:/mybatis/mybatis-config.xml
+
+
+mh:
+  file-path: /Users/wpd/Downloads/tmp/
