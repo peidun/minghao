@@ -10,6 +10,7 @@
     </resultMap>
 
     <insert id="save" parameterType="Photo">
+        insert into photo
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -23,8 +24,8 @@
             <if test="fileName != null">
                 fileName,
             </if>
-            <if test="code != null">
-                code,
+            <if test="password != null">
+                password,
             </if>
             <if test="uploadTime != null">
                 uploadTime,
@@ -46,8 +47,8 @@
             <if test="fileName != null">
                 #{fileName,jdbcType=VARCHAR},
             </if>
-            <if test="code != null">
-                #{code,jdbcType=VARCHAR},
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
             </if>
             <if test="uploadTime != null">
                 #{uploadTime,jdbcType=TIMESTAMP},
@@ -70,8 +71,8 @@
             <if test="fileName != null">
                 fileName = #{fileName,jdbcType=VARCHAR},
             </if>
-            <if test="code != null">
-                code = #{code,jdbcType=VARCHAR},
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
             </if>
             <if test="uploadTime != null">
                 uploadtime = #{uploadTime,jdbcType=TIMESTAMP},
@@ -90,11 +91,11 @@
         where id = #{id,jdbcType=VARCHAR}
     </select>
 
-    <select id="selectByEmailAndCode" resultMap="SysPhotoResultMap">
+    <select id="getByEmailAndPassword" resultMap="SysPhotoResultMap">
         select
         *
         from photo
         where email = #{email,jdbcType=VARCHAR}
-        and code = #{code,jdbcType=VARCHAR}
+        and password = #{password,jdbcType=VARCHAR}
     </select>
 </mapper>

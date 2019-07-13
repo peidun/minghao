@@ -30,4 +30,10 @@ body {
     transform: translateY(-50%);
 }
 
+.download-message {
+    height: 20px;
+    color: #fa6767;
+    font-size: 13px;
+}
+
 

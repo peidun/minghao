@@ -23,10 +23,10 @@ public class PhotoServiceImpl implements IPhotoService {
     }
 
     @Override
-    public Photo getByEmailAndCOde(String email, String code) {
+    public Photo getByEmailAndPassword(String email, String password) {
         Photo photo = null;
-        if (email != null && code != null) {
-            photo = photoMapper.selectByEmailAndCode(email, code);
+        if (email != null && password != null) {
+            photo = photoMapper.getByEmailAndPassword(email, password);
         }
         return photo;
     }

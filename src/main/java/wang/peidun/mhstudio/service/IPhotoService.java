@@ -8,5 +8,5 @@ import wang.peidun.mhstudio.entity.Photo;
  */
 public interface IPhotoService {
     Photo getById(String id);
-    Photo getByEmailAndCOde(String email, String code);
+    Photo getByEmailAndPassword(String email, String password);
 }
