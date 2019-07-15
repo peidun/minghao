@@ -1,12 +1,11 @@
 function download() {
     let url = "/download/submit"
     $("#message").empty();
-    let email = $("#email").val();
     let code = $("#code").val();
-    if (email == "" || code == "") {
-        $("#message").text("请输入邮箱和下载码");
+    if (code == "") {
+        $("#message").text("请输入下载码");
     } else {
-        url = url + "?email=" + email + "&password=" + code;
+        url = url + "?password=" + code;
         fetch(url).then(res => res.blob().then(blob => {
             let type = res.headers.get('Content-Type');
             if (type === "application/x-download") {

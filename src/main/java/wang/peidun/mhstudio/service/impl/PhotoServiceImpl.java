@@ -30,4 +30,13 @@ public class PhotoServiceImpl implements IPhotoService {
         }
         return photo;
     }
+
+    @Override
+    public Photo getByPassword(String password) {
+        Photo photo = null;
+        if (password != null) {
+            photo = photoMapper.getByPassword(password);
+        }
+        return photo;
+    }
 }

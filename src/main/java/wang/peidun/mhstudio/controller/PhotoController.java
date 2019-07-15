@@ -27,23 +27,15 @@ public class PhotoController {
     @Value("${upload.file.path}")
     private String filePath;
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "")
     public String index() {
         return "download";
     }
 
-    @RequestMapping(value = "/{id}")
-    public ModelAndView download(ModelAndView model, @PathVariable("id") String id) {
-        model.setViewName("download");
-        Photo photo = photoService.getById(id);
-        if (photo != null)
-            model.addObject("mail", photo.getEmail());
-        return model;
-    }
 
     @RequestMapping(value = "/submit")
-    public void download(String email, String password, HttpServletResponse response) {
-        Photo photo = photoService.getByEmailAndPassword(email, password);
+    public void download(String password, HttpServletResponse response) {
+        Photo photo = photoService.getByPassword(password);
         if (photo == null) {
             //return ResponseEntity.ok("error");
         }

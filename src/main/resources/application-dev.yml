@@ -14,6 +14,10 @@ spring:
     password: 123456
     url: jdbc:mysql://127.0.0.1:3306/mhstudio?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 5GB
+      max-request-size: 20GB
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapping/*Mapper.xml

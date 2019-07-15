@@ -8,8 +8,9 @@
 $(function() {
     $('a.js-scroll-trigger').bind('click', function(event) {
         var $anchor = $(this);
+        var atop = $($anchor.attr('href')).offset() === undefined ? 0 : $($anchor.attr('href')).offset().top;
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+            scrollTop: atop
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });

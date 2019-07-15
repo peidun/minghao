@@ -98,4 +98,11 @@
         where email = #{email,jdbcType=VARCHAR}
         and password = #{password,jdbcType=VARCHAR}
     </select>
+
+    <select id="getByPassword" resultMap="SysPhotoResultMap">
+        select
+        *
+        from photo
+        where password = #{password,jdbcType=VARCHAR}
+    </select>
 </mapper>

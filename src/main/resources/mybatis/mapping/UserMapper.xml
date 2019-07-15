@@ -74,4 +74,12 @@
         from user
         where id = #{id,jdbcType=VARCHAR}
     </select>
+
+    <select id="selectByUserAndPassword" resultMap="SysUserResultMap">
+        select
+        *
+        from user
+        where username = #{username,jdbcType=VARCHAR}
+        and password = #{password,jdbcType=VARCHAR}
+    </select>
 </mapper>

@@ -47,4 +47,6 @@ public interface UserMapper {
      * @return
      */
     List<User> selectAll();
+
+    User selectByUserAndPassword(String username, String password);
 }
