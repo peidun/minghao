@@ -16,6 +16,8 @@ function download() {
                 a.download = filename;
                 a.click();
                 //window.URL.revokeObjectURL(url);
+            } else {
+                $("#message").text("请输入正确的下载码");
             }
         }));
     }

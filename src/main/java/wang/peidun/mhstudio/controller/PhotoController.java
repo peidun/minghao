@@ -4,10 +4,11 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+import wang.peidun.mhstudio.dto.Response;
 import wang.peidun.mhstudio.entity.Photo;
+import wang.peidun.mhstudio.enums.ResponseStatus;
 import wang.peidun.mhstudio.service.IPhotoService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -34,10 +35,12 @@ public class PhotoController {
 
 
     @RequestMapping(value = "/submit")
-    public void download(String password, HttpServletResponse response) {
+    @ResponseBody
+    public Response download(String password, HttpServletResponse response) {
         Photo photo = photoService.getByPassword(password);
         if (photo == null) {
             //return ResponseEntity.ok("error");
+            return new Response(ResponseStatus.DOWNLOAD_ERROR);
         }
 
         String fileName = photo.getFileName();
@@ -60,5 +63,6 @@ public class PhotoController {
             e.printStackTrace();
         }
 
+        return null;
     }
 }

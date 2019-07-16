@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import wang.peidun.mhstudio.entity.User;
-import wang.peidun.mhstudio.service.IUserSercice;
+import wang.peidun.mhstudio.service.IUserService;
 
 /**
  * @Author: wangpd
@@ -14,7 +14,7 @@ import wang.peidun.mhstudio.service.IUserSercice;
 public class IndexController {
 
     @Autowired
-    private IUserSercice userSercice;
+    private IUserService userService;
 
     @RequestMapping(value = "/")
     public String index() {
@@ -30,9 +30,9 @@ public class IndexController {
     public String loginSubmit(String username, String password) {
         if (username != null && password == null) {
             username = username.trim();
-            User user = userSercice.login(username, password);
-            if (user == null) {
-
+            User user = userService.login(username, password);
+            if (user != null) {
+                
             }
         }
         return "login";

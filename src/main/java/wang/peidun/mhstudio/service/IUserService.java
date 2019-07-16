@@ -6,6 +6,6 @@ import wang.peidun.mhstudio.entity.User;
  * @Author: wangpd
  * @Date: 2019-07-15 22:01
  */
-public interface IUserSercice {
+public interface IUserService {
     User login(String username, String password);
 }
