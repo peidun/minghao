@@ -10,6 +10,9 @@
     </resultMap>
 
     <insert id="save" parameterType="Photo">
+        <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
+            select replace(UUID(), '-', '') from dual
+        </selectKey>
         insert into photo
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -18,8 +21,8 @@
             <if test="remark != null">
                 remark,
             </if>
-            <if test="email != null">
-                email,
+            <if test="path != null">
+                path,
             </if>
             <if test="fileName != null">
                 fileName,
@@ -41,8 +44,8 @@
             <if test="remark != null">
                 #{remark,jdbcType=VARCHAR},
             </if>
-            <if test="email != null">
-                #{email,jdbcType=VARCHAR},
+            <if test="path != null">
+                #{path,jdbcType=VARCHAR},
             </if>
             <if test="fileName != null">
                 #{fileName,jdbcType=VARCHAR},
@@ -54,7 +57,7 @@
                 #{uploadTime,jdbcType=TIMESTAMP},
             </if>
             <if test="status != null">
-                #{remark,jdbcType=INTEGER},
+                #{status,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
@@ -65,8 +68,8 @@
             <if test="remark != null">
                 remark = #{remark,jdbcType=VARCHAR},
             </if>
-            <if test="email != null">
-                email = #{email,jdbcType=VARCHAR},
+            <if test="path != null">
+                path = #{path,jdbcType=VARCHAR},
             </if>
             <if test="fileName != null">
                 fileName = #{fileName,jdbcType=VARCHAR},
@@ -91,13 +94,6 @@
         where id = #{id,jdbcType=VARCHAR}
     </select>
 
-    <select id="getByEmailAndPassword" resultMap="SysPhotoResultMap">
-        select
-        *
-        from photo
-        where email = #{email,jdbcType=VARCHAR}
-        and password = #{password,jdbcType=VARCHAR}
-    </select>
 
     <select id="getByPassword" resultMap="SysPhotoResultMap">
         select

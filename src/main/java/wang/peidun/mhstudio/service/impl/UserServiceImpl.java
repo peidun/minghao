@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import wang.peidun.mhstudio.dao.UserMapper;
 import wang.peidun.mhstudio.entity.User;
 import wang.peidun.mhstudio.service.IUserService;
+import wang.peidun.mhstudio.util.MD5Util;
 
 import javax.annotation.Resource;
 
@@ -18,6 +19,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User login(String username, String password) {
-        return userMapper.selectByUserAndPassword(username, password);
+        return userMapper.selectByUserAndPassword(username, MD5Util.getMD5(password));
     }
 }

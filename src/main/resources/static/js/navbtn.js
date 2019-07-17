@@ -10,4 +10,8 @@ window.onload=function (){
     $('#nav-download').click(function() {
         window.location.href = '/download';
     });
+
+    $('#nav-contact').click(function() {
+        window.location.href = '/#contact';
+    });
 }

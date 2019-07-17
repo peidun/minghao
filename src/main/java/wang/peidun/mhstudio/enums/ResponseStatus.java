@@ -7,7 +7,8 @@ package wang.peidun.mhstudio.enums;
 public enum ResponseStatus {
     REGISTER_ERROR_UNAUTHORIZED(401, "Unauthorized"),
     OK(0, "success"),
-    DOWNLOAD_ERROR(1, "download error");
+    DOWNLOAD_ERROR(1, "download error"),
+    UPLOAD_FAIL(1, "上传失败");
 
     private int status;
     private String message;

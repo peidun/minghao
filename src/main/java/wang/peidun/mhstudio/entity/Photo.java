@@ -12,7 +12,7 @@ import java.util.Date;
 public class Photo {
     private String id;
     private String remark;
-    private String email;
+    private String path;
     private String fileName;
     private String password;
     private Date uploadTime;

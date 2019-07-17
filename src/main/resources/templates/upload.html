@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/common-head :: common_head(~{::title},~{::link})">
+    <title>上传-加油吧</title>
+    <link rel="stylesheet" th:href="@{/css/upload.css}">
+</head>
+<body>
+
+<!-- NAVBAR
+================================================= -->
+<div th:replace="common/header :: header"></div>
+
+<!-- HERO
+================================================== -->
+<section class="section section-top">
+    <div class="container div-container ">
+        <div class="download-block bg-light col-md-4">
+            <h2 class="login-title">上传文件</h2>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-block" id="upload-btn">
+                    <i class="upload-font iconfont iconupload"></i>
+                    选择文件
+                </button>
+            </div>
+            <input type="file" id="uploadFile" style="display: none">
+            <div class="login-tip" id="message">
+                <span id="filename"></span>
+                <span class="upload-info upload-success" id="success">上传成功</span>
+                <span class="upload-info upload-fail" id="fail">上传失败</span>
+                <span id="speed"></span>
+            </div>
+            <div class="progress" style="display: none">
+                <div class="progress-bar" role="progressbar" id="progress"
+                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                     style="width: 90%;">
+                </div>
+            </div>
+            <p href="javascript:;" id="cancel">取消</p>
+        </div>
+        <!-- / .row -->
+    </div>
+    <!-- / .container -->
+</section>
+
+<!-- FOOTER
+================================================== -->
+<div class="footer-1">
+    <p>Made by wpd</p>
+</div>
+
+<!-- JAVASCRIPT
+================================================== -->
+
+<div th:replace="common/common-js :: common-js"></div>
+<script th:src="@{/js/upload.js}"></script>
+</body>
+
+</html>

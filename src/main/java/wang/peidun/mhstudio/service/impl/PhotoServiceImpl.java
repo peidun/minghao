@@ -18,17 +18,13 @@ public class PhotoServiceImpl implements IPhotoService {
     private PhotoMapper photoMapper;
 
     @Override
-    public Photo getById(String id) {
-        return photoMapper.selectById(id);
+    public int save(Photo photo) {
+        return photoMapper.save(photo);
     }
 
     @Override
-    public Photo getByEmailAndPassword(String email, String password) {
-        Photo photo = null;
-        if (email != null && password != null) {
-            photo = photoMapper.getByEmailAndPassword(email, password);
-        }
-        return photo;
+    public Photo getById(String id) {
+        return photoMapper.selectById(id);
     }
 
     @Override

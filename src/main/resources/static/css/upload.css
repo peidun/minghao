@@ -1,0 +1,76 @@
+body {
+    background-image: url(/img/download/upload-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+.download-block {
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,.3);
+    padding: 25px;
+    margin:0 auto;
+}
+
+.btn {
+    font-size: 14px;
+}
+
+.div-container {
+    position: relative;
+    top: 40%; /*偏移*/
+    transform: translateY(-50%);
+}
+
+
+.login-title {
+    color: #4e546c;
+    text-align: center;
+    letter-spacing: 4px;
+}
+
+.login-tip {
+    position: relative;
+    height: 20px;
+    color: #777777;
+    font-size: 13px;
+    margin-bottom: .5rem;
+}
+
+.upload-font {
+    font-size: 14px;
+    color: white;
+}
+
+.progress-bar {
+    background-color: #5cb85c;
+}
+
+#cancel {
+    color: #fa6767;
+    cursor: pointer;
+    font-size: 13px;
+    margin: 0;
+    text-align: right;
+    display: none;
+}
+
+#speed {
+    position: absolute;
+    right: 0;
+}
+
+.upload-info{
+    padding-left: 10px;
+    display: none;
+}
+
+.upload-success {
+    color: #5cb85c;
+}
+
+.upload-fail {
+    color: #fa6767;
+}
+

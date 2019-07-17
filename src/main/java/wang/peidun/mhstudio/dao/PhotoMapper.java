@@ -10,6 +10,5 @@ public interface PhotoMapper {
     int save(Photo photo);
     int update(Photo photo);
     Photo selectById(String id);
-    Photo getByEmailAndPassword(String email, String password);
     Photo getByPassword(String password);
 }

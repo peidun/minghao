@@ -19,9 +19,10 @@
         <div class=" col-md-5">
             <div class="login-block bg-light">
                 <h2 class="login-title">登录</h2>
-                <div class="login-tip" id="message" th:text></div>
+                <div class="login-tip" id="message" th:text="${message}"></div>
                 <div class="row">
                     <form action="/login/submit" method="post" id="login-form" style="width: 100%">
+                        <input type="hidden" name="from" th:value="${from}">
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名">

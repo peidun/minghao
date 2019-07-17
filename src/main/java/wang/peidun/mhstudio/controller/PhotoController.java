@@ -4,22 +4,30 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import wang.peidun.mhstudio.dto.Response;
 import wang.peidun.mhstudio.entity.Photo;
+import wang.peidun.mhstudio.entity.User;
+import wang.peidun.mhstudio.enums.MySessionAttribute;
 import wang.peidun.mhstudio.enums.ResponseStatus;
 import wang.peidun.mhstudio.service.IPhotoService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * @Author: wangpd
  * @Date: 2019-07-10 16:50
  */
 @Controller
-@RequestMapping(value = "/download")
 public class PhotoController {
 
     @Autowired
@@ -28,13 +36,13 @@ public class PhotoController {
     @Value("${upload.file.path}")
     private String filePath;
 
-    @RequestMapping(value = "")
+    @RequestMapping(value = "/download")
     public String index() {
         return "download";
     }
 
 
-    @RequestMapping(value = "/submit")
+    @RequestMapping(value = "/download/submit")
     @ResponseBody
     public Response download(String password, HttpServletResponse response) {
         Photo photo = photoService.getByPassword(password);
@@ -64,5 +72,49 @@ public class PhotoController {
         }
 
         return null;
+    }
+
+    @RequestMapping(value = "/upload")
+    public String upload(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute(MySessionAttribute.LOGIN_USER.getKey());
+        if (user == null) {
+            model.addAttribute("from", "upload");
+            return "login";
+        }
+        return "upload";
+    }
+
+    @RequestMapping(value = "/upload/submit")
+    @ResponseBody
+    public Response uploadFile(@RequestParam("file") MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            return new Response(ResponseStatus.UPLOAD_FAIL);
+        }
+        // 获取文件名
+        String fileName = file.getOriginalFilename();
+        // 文件存储路径
+        String newFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + fileName;
+
+        File dest = new File(filePath, newFileName);
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+        try {
+            file.transferTo(dest);
+
+            Photo photo = new Photo();
+            photo.setFileName(fileName);
+            photo.setPath(newFileName);
+            photo.setPassword(UUID.randomUUID().toString().replaceAll("-", ""));
+            photo.setStatus(0);
+            photo.setUploadTime(new Date());
+            photoService.save(photo);
+
+            return new Response(ResponseStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Response(ResponseStatus.UPLOAD_FAIL);
     }
 }
