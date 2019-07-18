@@ -88,7 +88,7 @@ function uploadFile() {
             speed = speed.toFixed(1);
             //剩余时间
             var resttime = ((evt.total - evt.loaded) / bspeed).toFixed(1);
-            $("#speed").html(speed + ' ' + resttime + 's');
+            $("#speed").html(speed + units + ' ' + resttime + 's');
         }
     }
 

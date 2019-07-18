@@ -43,19 +43,18 @@ public class PhotoController {
 
 
     @RequestMapping(value = "/download/submit")
-    @ResponseBody
-    public Response download(String password, HttpServletResponse response) {
+    public String download(String password, HttpServletResponse response, Model model) {
         Photo photo = photoService.getByPassword(password);
         if (photo == null) {
-            //return ResponseEntity.ok("error");
-            return new Response(ResponseStatus.DOWNLOAD_ERROR);
+            model.addAttribute("message", "下载码错误");
+            return "download";
         }
 
         String fileName = photo.getFileName();
 
-        File file = new File(filePath, fileName);
+        File file = new File(filePath, photo.getPath());
 
-        try (InputStream inputStream = new FileInputStream(file);
+        try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
              OutputStream outputStream = response.getOutputStream()) {
             //指明为下载
             response.setContentType("application/x-download");
@@ -63,10 +62,12 @@ public class PhotoController {
             response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
             response.addHeader("Content-Length", String.valueOf(file.length()));
 
-            //把输入流copy到输出流
-            IOUtils.copy(inputStream, outputStream);
-
-            outputStream.flush();
+            byte[] buffer = new byte[1024];
+            int i = inputStream.read(buffer);
+            while (i != -1) {
+                outputStream.write(buffer, 0, i);
+                i = inputStream.read(buffer);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

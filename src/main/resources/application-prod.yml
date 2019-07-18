@@ -1,6 +1,6 @@
 server:
   #端口号
-  port: 80
+  port: 8080
 
 spring:
   thymeleaf:
@@ -11,7 +11,7 @@ spring:
   datasource:
     username: root
     password: Wangpd123!
-    url: jdbc:mysql://127.0.0.1:3306/mhstudio?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://148.70.231.226:3306/mhstudio?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
   servlet:
     multipart:
