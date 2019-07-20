@@ -13,33 +13,31 @@
 
 <!-- HERO
 ================================================== -->
-<section class="section section-top" id="download">
-    <div class="container div-container">
-        <div class="row justify-content-center align-items-center">
-            <div class="download-block bg-light">
-                <div class="download-content">
-                    <p>请输入下载码</p>
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <form action="/download/submit" method="post" id="download-form">
-                                <div class="form-group">
-                                    <input type="text" name="password" id="code" class="form-control">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <input name="submit" type="button" onclick="download();" class="btn btn-primary"
-                                   value="下载文件">
-                        </div>
+<div class="container div-container">
+    <div class="row justify-content-center align-items-center">
+        <div class="download-block bg-light">
+            <div class="download-content">
+                <p>请输入下载码</p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <form action="/download/submit" method="post" id="download-form">
+                            <div class="form-group">
+                                <input type="text" name="password" id="code" class="form-control">
+                            </div>
+                        </form>
                     </div>
-                    <div class="download-message" id="message" th:text="${message}"></div>
+                    <div class="col-lg-4 col-md-4">
+                        <input name="submit" type="button" onclick="download();" class="btn btn-primary"
+                               value="下载文件">
+                    </div>
                 </div>
+                <div class="download-message" id="message" th:text="${message}"></div>
             </div>
         </div>
-        <!-- / .row -->
     </div>
-    <!-- / .container -->
-</section>
+    <!-- / .row -->
+</div>
+<!-- / .container -->
 
 <!-- FOOTER
 ================================================== -->

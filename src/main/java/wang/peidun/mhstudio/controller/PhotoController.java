@@ -1,6 +1,5 @@
 package wang.peidun.mhstudio.controller;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.UUID;
 
@@ -59,7 +59,7 @@ public class PhotoController {
             //指明为下载
             response.setContentType("application/x-download");
 
-            response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
+            response.addHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName,"UTF-8"));
             response.addHeader("Content-Length", String.valueOf(file.length()));
 
             byte[] buffer = new byte[1024];

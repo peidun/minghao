@@ -3,6 +3,7 @@ body {
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
+    height: 100vh;
 }
 
 .download-block {
@@ -19,7 +20,7 @@ body {
 
 .div-container {
     position: relative;
-    top: 40%; /*偏移*/
+    top: 50%; /*偏移*/
     transform: translateY(-50%);
 }
 

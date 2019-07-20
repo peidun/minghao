@@ -29,6 +29,11 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping(value = "/find")
+    public String find() {
+        return "find";
+    }
+
     @RequestMapping(value = "/login")
     public String login() {
         return "login";
