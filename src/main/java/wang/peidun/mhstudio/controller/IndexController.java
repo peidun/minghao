@@ -1,11 +1,19 @@
 package wang.peidun.mhstudio.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import wang.peidun.mhstudio.dto.Response;
+import wang.peidun.mhstudio.entity.Contact;
 import wang.peidun.mhstudio.entity.User;
 import wang.peidun.mhstudio.enums.MySessionAttribute;
+import wang.peidun.mhstudio.enums.ResponseStatus;
+import wang.peidun.mhstudio.service.IContactService;
 import wang.peidun.mhstudio.service.IUserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +32,9 @@ public class IndexController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IContactService contactService;
+
     @RequestMapping(value = "/")
     public String index() {
         return "index";
@@ -40,7 +51,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/loginout")
-    public String loginout() {
+    public String loginOut() {
         HttpSession session = request.getSession();
         session.removeAttribute(MySessionAttribute.LOGIN_USER.getKey());
         return "redirect:/";
@@ -65,5 +76,12 @@ public class IndexController {
         }
         model.addAttribute("from", from);
         return "login";
+    }
+
+    @RequestMapping(value = "/contact", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.POST)
+    @ResponseBody
+    public Response contact(@RequestBody Contact contact) {
+        contactService.save(contact);
+        return new Response(ResponseStatus.OK);
     }
 }

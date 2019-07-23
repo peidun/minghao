@@ -1,13 +1,15 @@
 package wang.peidun.mhstudio.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import wang.peidun.mhstudio.dto.PageParam;
 import wang.peidun.mhstudio.dto.Response;
 import wang.peidun.mhstudio.entity.Photo;
 import wang.peidun.mhstudio.entity.User;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -80,15 +83,35 @@ public class PhotoController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(MySessionAttribute.LOGIN_USER.getKey());
         if (user == null) {
-            model.addAttribute("from", "upload");
+            model.addAttribute("from", "/upload");
             return "login";
         }
         return "upload";
     }
 
+    @RequestMapping(value = "/upload/list")
+    public String uploadList(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute(MySessionAttribute.LOGIN_USER.getKey());
+        if (user == null) {
+            model.addAttribute("from", "upload/list");
+            return "login";
+        }
+        return "uploadlist";
+    }
+
+    @RequestMapping(value = "/upload/list/page", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.POST)
+    @ResponseBody
+    public Response uploadListPage(@RequestBody PageParam pageParam) {
+        PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), "uploadtime desc");
+        List<Photo> list = photoService.findAll();
+        PageInfo<Photo> page = new PageInfo<>(list);
+        return new Response<PageInfo>(page);
+    }
+
     @RequestMapping(value = "/upload/submit")
     @ResponseBody
-    public Response uploadFile(@RequestParam("file") MultipartFile file) {
+    public Response uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("remark") String remark) {
         if (file == null || file.isEmpty()) {
             return new Response(ResponseStatus.UPLOAD_FAIL);
         }
@@ -104,11 +127,14 @@ public class PhotoController {
         try {
             file.transferTo(dest);
 
+
+
             Photo photo = new Photo();
             photo.setFileName(fileName);
             photo.setPath(newFileName);
-            photo.setPassword(UUID.randomUUID().toString().replaceAll("-", ""));
+            photo.setPassword(String.valueOf(System.currentTimeMillis() / 1000));
             photo.setStatus(0);
+            photo.setRemark(remark);
             photo.setUploadTime(new Date());
             photoService.save(photo);
 

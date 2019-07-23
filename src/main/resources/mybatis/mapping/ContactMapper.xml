@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wang.peidun.mhstudio.dao.ContactMapper">
+
+    <resultMap id="SysUserResultMap" type="Contact">
+        <id property="id" column="id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="username" column="USERNAME" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="email" column="EMAIL" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="phone" column="PHONE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="message" column="MESSAGE" javaType="java.lang.String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="save" parameterType="Contact">
+        <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
+            select replace(UUID(), '-', '') from dual
+        </selectKey>
+        insert into contact
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="message != null">
+                message,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null">
+                #{message,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

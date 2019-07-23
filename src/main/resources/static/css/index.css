@@ -11,11 +11,11 @@
  CONTACT
 -----------------------*/
 
-.form-control{
+.form-control {
     border-radius: 3px;
     height: 50px;
     padding-left: 15px;
-    border: 1px solid#ddd;
+    border: 1px solid #ddd;
 }
 
 .form-group {
@@ -25,12 +25,20 @@
 .contact-icon {
     font-size: 20px;
     line-height: 20px;
+    position: absolute;
+    top: 5px;
 }
-.skill-list{
+
+.contact-txt {
+    margin-left: 30px;
+}
+
+.skill-list {
     padding-left: 30px;
     margin-top: 15px;
 }
-.skill-list li{
+
+.skill-list li {
     position: relative;
     color: #222;
     padding: 0px 0px 7px 30px;
@@ -39,7 +47,7 @@
 /*----------------------
  Banner STYLE
 -----------------------*/
-.banner-content{
+.banner-content {
     padding: 130px 0px;
 }
 
@@ -48,14 +56,15 @@
  FEATURE STYLE
 -----------------------*/
 
-.feature-block h4{
+.feature-block h4 {
     text-transform: capitalize;
 }
-.feature-icon-block{
+
+.feature-icon-block {
     font-size: 40px;
     width: 100px;
     height: 100px;
-    background:#eee;
+    background: #eee;
     color: #007bff;
     text-align: center;
     margin: 0 auto;
@@ -63,12 +72,12 @@
     padding-top: 15px;
     -webkit-transition: all .3s ease 0s;
     -o-transition: all .3s ease 0s;
-    transition:all .3s ease 0s ;
+    transition: all .3s ease 0s;
 
 }
 
-.feature-block:hover .feature-icon-block{
-    background:#007bff;
+.feature-block:hover .feature-icon-block {
+    background: #007bff;
     color: #fff;
 }
 
@@ -80,36 +89,38 @@
 /*----------------------
  ABOUT STYLE
 -----------------------*/
-.about-content{
+.about-content {
     padding-left: 30px;
 }
-.about-content p{
+
+.about-content p {
     margin: 20px 0px 30px;
 }
 
 
-.about-img{
+.about-img {
     position: relative;
     z-index: 222;
     padding: 20px;
 }
 
 
-.about-img:after{
+.about-img:after {
     position: absolute;
-    content:"";
+    content: "";
     right: 0px;
-    bottom:0px;
+    bottom: 0px;
     width: 150px;
     height: 150px;
     background: #fff;
     z-index: -1;
     -webkit-box-shadow: 0px 0px 20px #eee;
-    box-shadow:  0px 0px 20px #eee;
+    box-shadow: 0px 0px 20px #eee;
 }
-.about-img:before{
+
+.about-img:before {
     position: absolute;
-    content:"";
+    content: "";
     left: 0px;
     top: 0px;
     width: 150px;
@@ -117,11 +128,35 @@
     background: #fff;
     z-index: -1;
     -webkit-box-shadow: 0px 0px 20px #eee;
-    box-shadow:  0px 0px 20px #eee;
+    box-shadow: 0px 0px 20px #eee;
 }
 
 .home-container {
     position: relative;
     top: 50%; /*偏移*/
     transform: translateY(-50%);
+}
+
+.top-title {
+    font-size: 3rem;
+}
+
+.wechat-img {
+    text-align: center;
+}
+.wechat-img img {
+    width: 120px;
+    margin: 10px;
+}
+.wechat-img p {
+    font-size: 12px;
+}
+.contact-tip {
+    font-size: 14px;
+    color: red;
+    margin-left: 10px;
+}
+.commit-success {
+    color: limegreen;
+    display: none;
 }

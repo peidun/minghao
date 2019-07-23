@@ -22,6 +22,11 @@ mybatis:
   mapper-locations: classpath:/mybatis/mapping/*Mapper.xml
   config-location:  classpath:/mybatis/mybatis-config.xml
 
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 upload:
   file:

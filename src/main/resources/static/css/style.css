@@ -397,7 +397,7 @@ img {
 下载页的footer
 -----------------------*/
 .footer-1 {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;

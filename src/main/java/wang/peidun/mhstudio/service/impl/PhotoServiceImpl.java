@@ -6,6 +6,7 @@ import wang.peidun.mhstudio.entity.Photo;
 import wang.peidun.mhstudio.service.IPhotoService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author: wangpd
@@ -34,5 +35,10 @@ public class PhotoServiceImpl implements IPhotoService {
             photo = photoMapper.getByPassword(password);
         }
         return photo;
+    }
+
+    @Override
+    public List<Photo> findAll() {
+        return photoMapper.selectAll();
     }
 }

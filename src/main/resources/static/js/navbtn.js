@@ -1,4 +1,4 @@
-window.onload=function (){
+$(function(){
     $('#nav-home').click(function() {
         window.location.href = '/';
     });
@@ -14,4 +14,4 @@ window.onload=function (){
     $('#nav-contact').click(function() {
         window.location.href = '/#contact';
     });
-}
+});

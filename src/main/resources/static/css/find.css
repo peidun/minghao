@@ -1,3 +1,9 @@
-.find-banner {
+.img-div {
+    padding: 17px;
+    text-align: center;
+}
 
+.fixed-top {
+    background-color: #1b1e21;
+    position: static;
 }

@@ -109,7 +109,7 @@
                         </h2>
                         <p>我们每天穿梭在这些高楼与高楼之间，忙碌而努力的生活着，你是否停下脚步，静下来去感受周遭的一切</p>
 
-                        <a href="#" class="btn btn-primary">更多...</a>
+                        <a href="/find" class="btn btn-primary">更多...</a>
                     </div>
                 </div>
             </div>
@@ -224,7 +224,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="您的电话 *" required="required">
+                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="您的手机号 *" required="required">
                                 </div>
                             </div>
                         </div>
@@ -237,7 +237,9 @@
 
                             <div class="col-lg-12">
                                 <div class="submit">
-                                    <input name="submit" type="submit" class="btn btn-primary btn-lg" value="提交">
+                                    <input type="button" class="btn btn-primary btn-lg" id="submit" value="提交">
+                                    <span class="contact-tip" id="tip"></span>
+                                    <span class="contact-tip commit-success" id="success-tip">提交成功</span>
                                     <p class="pt-3"></p>
                                 </div>
                             </div>
@@ -246,12 +248,19 @@
                 </div>
                 <div class="col-lg-6 ">
                     <ul class="list-unstyled skill-list">
-                        <li><i class="contact-icon iconfont iconphone"></i>&nbsp;&nbsp;‭183 6288 5790‬</li>
-                        <li><i class="contact-icon iconfont iconwechat"></i>&nbsp;&nbsp;minghaosheying-1</li>
-                        <li><i class="contact-icon iconfont iconqq"></i>&nbsp;&nbsp;2559079211</li>
-                        <li><i class="contact-icon iconfont iconemail"></i>&nbsp;&nbsp;wanhao1995131@outlook.com</li>
-                        <li><i class="contact-icon iconfont iconweibo"></i>&nbsp;&nbsp;<a href="https://weibo.com/u/5285569829">Photographer乂阿浩</a></li>
+                        <li><i class="contact-icon iconfont iconphone"></i><span class="contact-txt">‭183 6288 5790‬</span></li>
+                        <li><i class="contact-icon iconfont iconwechat"></i><span class="contact-txt">minghaosheying-1</span></li>
+                        <li><i class="contact-icon iconfont iconqq"></i><span class="contact-txt">2559079211</span></li>
+                        <li><i class="contact-icon iconfont iconemail"></i><span class="contact-txt">wanhao1995131@outlook.com</span></li>
+                        <li>
+                            <i class="contact-icon iconfont iconweibo"></i>
+                            <span class="contact-txt"><a href="https://weibo.com/u/5285569829" target="_blank">摄影师灬阿浩</a></span>
+                        </li>
                     </ul>
+                    <div class="wechat-img">
+                        <img src="/img/wechat.jpg">
+                        <p>微信扫一扫，获取最新动态</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -266,6 +275,7 @@
     ================================================== -->
 
     <div th:replace="common/common-js :: common-js" ></div>
+    <script th:src="@{/js/index.js}"></script>
 </body>
 
 </html>

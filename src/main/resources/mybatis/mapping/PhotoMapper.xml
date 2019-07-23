@@ -101,4 +101,8 @@
         from photo
         where password = #{password,jdbcType=VARCHAR}
     </select>
+
+    <select id="selectAll" resultMap="SysPhotoResultMap">
+        select * from photo
+    </select>
 </mapper>

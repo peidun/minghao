@@ -10,21 +10,27 @@ fileBtn.change(function () {
     if (fileObj) {
         var fileSize = getSize(fileObj.size);
         $("#filename").text(fileObj.name + " " +fileSize);
-        uploadBtn.attr('disabled', false);
 
-        // 进度条归零
-        setProgress(0);
-        // 上传按钮禁用
-        uploadBtn.attr('disabled', true);
-        // 进度条显示
-        showProgress();
-        // 上传文件
-        uploadFile();
+        hideProgress();
+        $("#upload").show();
 
         $("#success").hide();
         $("#fail").hide();
     }
 });
+
+$("#upload").click(function(){
+    $("#upload").hide();
+    // 进度条归零
+    setProgress(0);
+    // 上传按钮禁用
+    uploadBtn.attr('disabled', true);
+    // 进度条显示
+    showProgress();
+    // 上传文件
+    uploadFile();
+});
+
 // 上传文件按钮点击的时候
 uploadBtn.click(function () {
     fileBtn.click();
@@ -33,6 +39,7 @@ uploadBtn.click(function () {
 function uploadFile() {
     var url = "/upload/submit";
     var fileObj = fileBtn.get(0).files[0];
+    var remark = $("#remark").val()
     if (fileObj == null) {
         alert("请选择文件");
         return;
@@ -40,6 +47,7 @@ function uploadFile() {
     // FormData 对象
     var form = new FormData();
     form.append('file', fileObj); // 文件对象
+    form.append('remark', remark);
     // XMLHttpRequest 对象
     var xhr = new XMLHttpRequest();
     //true为异步处理
