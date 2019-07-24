@@ -8,3 +8,14 @@ function userLogin(){
         $("#login-form").submit();
     }
 }
+
+$(function(){
+    $("#username").focus();
+});
+
+
+$(document).keyup(function (e) {
+    if (e.keyCode === 13) {
+        userLogin();
+    }
+});

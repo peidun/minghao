@@ -109,6 +109,13 @@ public class PhotoController {
         return new Response<PageInfo>(page);
     }
 
+    @RequestMapping(value = "/upload/delete/{id}")
+    @ResponseBody
+    public Response delete( @PathVariable("id") String id) {
+
+        return photoService.delete(id);
+    }
+
     @RequestMapping(value = "/upload/submit")
     @ResponseBody
     public Response uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("remark") String remark) {

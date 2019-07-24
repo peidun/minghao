@@ -1,5 +1,6 @@
 package wang.peidun.mhstudio.service;
 
+import wang.peidun.mhstudio.dto.Response;
 import wang.peidun.mhstudio.entity.Photo;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface IPhotoService {
     Photo getById(String id);
     Photo getByPassword(String password);
     List<Photo> findAll();
+    Response delete(String id);
 }

@@ -211,6 +211,10 @@ img {
     box-shadow: none !important
 }
 
+button:focus {
+    outline: none;
+}
+
 
 /*-------------------
    MENU

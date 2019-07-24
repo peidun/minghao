@@ -1,11 +1,15 @@
 package wang.peidun.mhstudio.service.impl;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import wang.peidun.mhstudio.dao.PhotoMapper;
+import wang.peidun.mhstudio.dto.Response;
 import wang.peidun.mhstudio.entity.Photo;
+import wang.peidun.mhstudio.enums.ResponseStatus;
 import wang.peidun.mhstudio.service.IPhotoService;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -14,6 +18,9 @@ import java.util.List;
  */
 @Service
 public class PhotoServiceImpl implements IPhotoService {
+
+    @Value("${upload.file.path}")
+    private String filePath;
 
     @Resource
     private PhotoMapper photoMapper;
@@ -40,5 +47,20 @@ public class PhotoServiceImpl implements IPhotoService {
     @Override
     public List<Photo> findAll() {
         return photoMapper.selectAll();
+    }
+
+    @Override
+    public Response delete(String id) {
+        Photo photo = photoMapper.selectById(id);
+        if (photo != null) {
+            File file = new File(filePath, photo.getPath());
+            if (file.exists()) {
+                file.delete();
+            }
+            photoMapper.delete(id);
+            return new Response(ResponseStatus.OK);
+        } else {
+            return new Response(ResponseStatus.DELETE_ERROR);
+        }
     }
 }

@@ -66,7 +66,6 @@ function uploadFile() {
     xhr.send(form);
 
     function progressFunction(evt) {
-        debugger;
         if (evt.lengthComputable) {
             var completePercent = Math.round(evt.loaded / evt.total * 100)
                 + '%';

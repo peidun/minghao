@@ -105,4 +105,8 @@
     <select id="selectAll" resultMap="SysPhotoResultMap">
         select * from photo
     </select>
+
+    <delete id="delete">
+        delete from photo where id=#{id}
+    </delete>
 </mapper>

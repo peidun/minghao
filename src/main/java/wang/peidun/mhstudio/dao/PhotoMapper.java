@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface PhotoMapper {
     int save(Photo photo);
+    int delete(String id);
     int update(Photo photo);
     Photo selectById(String id);
     Photo getByPassword(String password);

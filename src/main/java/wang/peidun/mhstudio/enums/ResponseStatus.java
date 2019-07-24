@@ -8,6 +8,7 @@ public enum ResponseStatus {
     REGISTER_ERROR_UNAUTHORIZED(401, "Unauthorized"),
     OK(0, "success"),
     DOWNLOAD_ERROR(1, "download error"),
+    DELETE_ERROR(1, "删除失败"),
     UPLOAD_FAIL(1, "上传失败");
 
     private int status;
