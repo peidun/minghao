@@ -83,7 +83,7 @@ public class PhotoController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(MySessionAttribute.LOGIN_USER.getKey());
         if (user == null) {
-            model.addAttribute("from", "/upload");
+            model.addAttribute("from", "upload");
             return "login";
         }
         return "upload";
